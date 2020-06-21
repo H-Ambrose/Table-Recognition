@@ -27,7 +27,7 @@
 表格重建工作  
 使用单元格关系判别网络判断任意两个单元格的相邻关系  
   
-(6)Rethinking Semantic Segmentationfor Table Structure Recognition in Documents:
+(6)Rethinking Semantic Segmentationfor Table Structure Recognition in Documents:  
 将表格结构的识别定义为语义分割问题  
 FCN: Encoder-Decoder  
   
