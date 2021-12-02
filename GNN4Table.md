@@ -1,8 +1,8 @@
 # GNN for Table Detection
 ## 2017 Table Recognition in Heterogeneous Documents using Machine Learning
-*流程*：Optical character recognition (OCR) → Feature extraction → Neural networks training（AutoMLP）→ Post processing → Evaluation（ → Table structure analysis）
-*特征*：词级上下文特征的空白分布来识别文档图像中的表元素和非表元素（word level contextual features in terms of white space distribution）。主要包括单词与它的左、右、上、下邻居词元素之间的距离；单词的宽度和高度（这些特征的选择是基于观察到通常表元素之间的空白分布不同于非表元素之间的空白分布）。的像素距离。系统使用该信息将单词列表中的单个单词标记为表元素和非表元素。这些特征被保存在一个对象数组中，该数组具有以下值来构建特征向量。直接使用文本块的坐标信息来计算每个文本块的特征向量
-后处理：AutoMLP输出的分类结果准确率仅为64.2%，增加后处理，最终达到了95.08%的分类准确率。将当前单词的类标签修改为相邻区域内多数计数的类标签。e.g. 如果单词的左右邻居都被认为是“table”，那么考虑中的单词的标签也被更改为“table”。
+**流程**：Optical character recognition (OCR) → Feature extraction → Neural networks training（AutoMLP）→ Post processing → Evaluation（ → Table structure analysis）  
+**特征**：词级上下文特征的空白分布来识别文档图像中的表元素和非表元素（word level contextual features in terms of white space distribution）。主要包括单词与它的左、右、上、下邻居词元素之间的距离；单词的宽度和高度（这些特征的选择是基于观察到通常表元素之间的空白分布不同于非表元素之间的空白分布）。的像素距离。系统使用该信息将单词列表中的单个单词标记为表元素和非表元素。这些特征被保存在一个对象数组中，该数组具有以下值来构建特征向量。直接使用文本块的坐标信息来计算每个文本块的特征向量  
+后处理：AutoMLP输出的分类结果准确率仅为64.2%，增加后处理，最终达到了95.08%的分类准确率。将当前单词的类标签修改为相邻区域内多数计数的类标签。e.g. 如果单词的左右邻居都被认为是“table”，那么考虑中的单词的标签也被更改为“table”。  
 
 ## DAS 2018 Comparing machine learning approaches for table recognition in historical register books
 Clinchant et al.  
@@ -17,20 +17,20 @@ Lohani et al.
 GCN  
 
 ## 2019 Table Detection in Invoice Documents by Graph Neural Networks
-*输入与输出*：
+**输入与输出**：  
 输入 – 文档实体的可见图(visibility graph)。G = (V, A)，V是节点的embedding，A是邻接矩阵。  
 输出 – 文档实体的标签与邻接矩阵。其中每个元素为对应相邻点属于同一文档实体的概率。邻接矩阵是边分类结果：distinguish edges connecting nodes inside the same region, labelled with a 1 in the ground-truth against these edges that connect two different regions, labelled as 0.  
 
-*特征*：
-G = (V, E)为可见性图。节点V集对应于检测到的文档实体。每个检测到的实体对应于一个7维向量，其中包含边界框位置及其内容的概率直方图(数字、字母或符号)，然后进行embedding。
+**特征**：  
+G = (V, E)为可见性图。节点V集对应于检测到的文档实体。每个检测到的实体对应于一个7维向量，其中包含边界框位置及其内容的概率直方图(数字、字母或符号)，然后进行embedding。  
 边集E表示节点之间的可见性关系。当且仅当边界框垂直或水平可见时(可以追踪一条水平或垂直的直线，而不与任何其他实体相交)，两个实体用一条边连接。使用这两个方向来检查可见性就足够了，因为它遵循文档中表格的组织方式。最后，覆盖超过四分之一页面高度的长边将被丢弃。  
 
-网络结构：Graph Residual，Adjacency Layer，参考：Few-shot learning with graph neural networks
-Graph Residual中的邻接矩阵不更新，是利用邻接矩阵更新节点的embedding。最后加入一次Adjacency Learning更新一下邻接矩阵（邻接矩阵有两个(3个？)，2 hop和5 hop）
+网络结构：Graph Residual，Adjacency Layer，参考：Few-shot learning with graph neural networks  
+Graph Residual中的邻接矩阵不更新，是利用邻接矩阵更新节点的embedding。最后加入一次Adjacency Learning更新一下邻接矩阵（邻接矩阵有两个(3个？)，2 hop和5 hop）  
 
 
-ref: 参考了[这里](https://github.com/bljessica/paper-reading-records/blob/62e694df62e2217daf9d53cb358e97a7cc4c8e46/GNN4Table/notes.md)
 # GNN for Table Recognition
+ref: 参考了[这里](https://github.com/bljessica/paper-reading-records/blob/62e694df62e2217daf9d53cb358e97a7cc4c8e46/GNN4Table/notes.md)
 
 ## 《Rethinking Table Recognition using Graph Neural Networks》
 ### 介绍
